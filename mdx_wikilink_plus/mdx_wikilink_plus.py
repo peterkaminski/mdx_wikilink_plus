@@ -142,7 +142,7 @@ class WikiLinkPlusPattern(markdown.inlinepatterns.Pattern):
             clean_path = urlo.path.rstrip('/')
             if not label:
                 if clean_path:
-                    label = re.sub(r'[\s_-]+', ' ', re.sub(r'\..*$', r'', os.path.basename(clean_path))).strip()
+                    label = re.sub(r'[\s_-]+', ' ', re.sub(r'\..{,4}$', r'', os.path.basename(clean_path))).strip()
                     if label_case.lower() == 'titlecase':
                         label = title(label)
                     elif label_case.lower() == 'capitalize':
